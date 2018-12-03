@@ -15,7 +15,6 @@ class Counter extends Component {
   }
   
   hundleMinusButton = () => {
-
     this.setState({ count: this.state.count - 1 })
   }
   
