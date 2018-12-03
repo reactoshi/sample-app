@@ -1,34 +1,33 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-const App = () => {
-  const profiles = [
-    { name: "Taro", age:10 },
-    { name: "toshi", age:27 },
-    { name: "user" },
-  ]
-  return (
-    <div>
-      {
-        profiles.map((profiles, index) => {
-          return <User name = {profiles.name} age={profiles.age} key={index}/>
-        })
-      }
-    </div>
-  )
-}
+const App = () => (<Counter />)
 
-const User = (props) => {
-  return <div>Hi, I am {props.name}! I am {props.age} years old</div>
-}
+class Counter extends Component {
+  constructor(props) {
+    super(props)
+    console.log(this.state)
+    this.state = { count:0 }
+  }
+  
+  hundlePlusButton = () => {
+    this.setState({ count: this.state.count + 1 })
+  }
+  
+  hundleMinusButton = () => {
 
-User.defaultProps = {
-  age: 1
-}
-
-User.propTypes = {
-  name: PropTypes.string,
-  age: PropTypes.number.isRequired
+    this.setState({ count: this.state.count - 1 })
+  }
+  
+  render() {
+    return (
+      <React.Fragment>
+          <div> count: { this.state.count }</div>
+        <button onClick={this.hundlePlusButton}>+1</button>
+        <button onClick={this.hundleMinusButton}>-1</button>
+      </React.Fragment>
+    )
+  }
 }
 
 export default App;
